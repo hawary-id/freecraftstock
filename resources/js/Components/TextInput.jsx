@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 export default function TextInput({
-    type = 'text',
+    type = "text",
     name,
     value,
     className,
@@ -25,7 +25,7 @@ export default function TextInput({
                 name={name}
                 value={value}
                 className={
-                    `border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm ` +
+                    `block w-full px-0 py-2 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none invalid:border-pink-500 focus:invalid:border-pink-500 invalid:text-pink-500 focus:invalid:text-pink-500 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-purple-600 peer ` +
                     className
                 }
                 ref={input}
