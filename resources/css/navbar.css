@@ -1,0 +1,11 @@
+@layer components {
+    .nav-link {
+        @apply text-sm;
+    }
+    .nav-link.active {
+        @apply text-white;
+    }
+    .nav-link:hover {
+        @apply text-white;
+    }
+}
