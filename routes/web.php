@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PngController;
+use App\Http\Controllers\PsdController;
+use App\Http\Controllers\TutorialController;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\VectorController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,14 +23,9 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/{slug}', [TypeController::class,'index'])->name('type');
+Route::get('/{typeSlug}/{slug}/{code}', [DetailController::class,'index'])->name('detail');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -32,7 +35,7 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
     route::get('/', function () {
         return Inertia::render('Prototype/Home');
     })->name('home');
-    route::get('/vectors', function () {
+    route::get('/vectors/popular', function () {
         return Inertia::render('Prototype/Vectors');
     })->name('vectors');
     route::get('/photos', function () {

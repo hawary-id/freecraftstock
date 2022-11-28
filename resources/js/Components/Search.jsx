@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/inertia-react";
 import { useEffect, useState } from "react";
 import SearchRecommended from "./SearchRecommended";
 
-export default function Search() {
+export default function Search({ recommended }) {
     const [scroll, setScroll] = useState(false);
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -20,7 +20,7 @@ export default function Search() {
         >
             <div className="flex items-center w-full px-3 py-2 border-b md:px-6">
                 <Link
-                    href={route("prototype.home")}
+                    href={route("home")}
                     className="flex items-center mr-3 text-2xl font-semibold text-slate-500"
                 >
                     <img src="/images/logo_black.png" className="h-8" />
@@ -60,9 +60,7 @@ export default function Search() {
                 </form>
             </div>
             <div className="flex w-full gap-3 px-3 py-3 overflow-x-auto text-sm bg-white border-b md:px-6 top-26 text-slate-500">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                    <SearchRecommended key={i} title="Batik" slug="batik" />
-                ))}
+                <SearchRecommended keyword={recommended.keyword} />
             </div>
         </div>
     );

@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/inertia-react";
 
 export default function DetailAuthor({ Avatar, name, followers }) {
     return (
-        <div className="flex w-full gap-5 px-3 md:px-0">
+        <div className="flex w-full gap-5 px-3 py-3 md:mb-2 md:px-0">
             <Link
                 href={route("prototype.author")}
                 className="flex items-center"
@@ -21,11 +21,11 @@ export default function DetailAuthor({ Avatar, name, followers }) {
                     </small>
                 </div>
             </Link>
-            <div className="flex items-center text-center grow">
+            <Link href="" className="flex items-center text-center grow">
                 <div className="py-1 border rounded grow bg-slate-200 border-slate-300 hover:bg-slate-300">
                     Follow
                 </div>
-            </div>
+            </Link>
         </div>
     );
 }

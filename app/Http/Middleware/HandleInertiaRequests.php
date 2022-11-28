@@ -2,6 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Category;
+use App\Models\Content;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -32,6 +35,19 @@ class HandleInertiaRequests extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return mixed[]
      */
+
+    public function categoryList()
+    {
+        return Category::all();
+    }
+    public function recommendedSearch()
+    {
+        return Content::inRandomOrder()->limit(1)->pluck('keyword');
+    }
+    public function TypeList()
+    {
+        return Type::all();
+    }
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
@@ -43,6 +59,15 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            'categoryList' => [
+                'category' => $this->categoryList(),
+            ],
+            'recommendedSearch' => [
+                'keyword' => $this->recommendedSearch(),
+            ],
+            'typeList' => [
+                'type' => $this->TypeList(),
+            ]
         ]);
     }
 }

@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="flex items-center w-full text-white">
                     <div className="flex flex-col">
                         <Link
-                            href={route("prototype.home")}
+                            href={route("home")}
                             className="text-4xl font-semibold"
                         >
                             Freecraftstock
@@ -20,7 +20,7 @@ export default function Footer() {
                 <div className="flex self-end justify-end w-full">
                     <div className="flex flex-col">
                         <Link
-                            href={route("prototype.register")}
+                            href={route("register")}
                             className="self-end py-1 mb-2 text-sm text-center bg-orange-400 border rounded-md w-28 text-slate-50 hover:bg-orange-500 hover:ring hover:ring-blue-300"
                         >
                             Sign Up Free
@@ -48,7 +48,7 @@ export default function Footer() {
             <div className="flex items-center justify-between w-full py-3 text-sm text-center text-slate-300">
                 <div className="flex">
                     <Link
-                        href={route("prototype.home")}
+                        href={route("home")}
                         className="mr-2 font-semibold text-slate-100 hover:text-slate-200"
                     >
                         www.freecraftstock.com

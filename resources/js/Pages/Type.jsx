@@ -4,20 +4,32 @@ import Navbar from "@/Components/Navbar";
 import Search from "@/Components/Search";
 import Content from "@/Layouts/Content";
 
-export default function Vectors() {
+export default function Type({
+    auth,
+    contents,
+    categoryList,
+    recommendedSearch,
+    typeList,
+    title,
+}) {
     return (
         <>
             <div className="h-screen">
                 {/* Start:Navbar */}
-                <Navbar />
+                <Navbar
+                    auth={auth}
+                    categories={categoryList}
+                    types={typeList}
+                    title={title}
+                />
                 {/* End:Navbar */}
 
                 {/* Start:Search */}
-                <Search />
+                <Search recommended={recommendedSearch} />
                 {/* End:Search */}
 
                 {/* Start:Content */}
-                <Content title="Free Vectors" />
+                <Content title={title} contents={contents} />
                 {/* End:Content */}
 
                 {/* Start:Footer */}

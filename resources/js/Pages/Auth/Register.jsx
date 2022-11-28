@@ -50,10 +50,10 @@ export default function Register() {
                         <span className="bi bi-chevron-left"></span>
                     </Link>
                     <div className="flex flex-col self-center w-full px-6 md:px-12">
-                        <div className="flex flex-col items-start w-full">
+                        <div className="flex flex-col items-start w-full mb-8">
                             <Link
                                 href={route("prototype.home")}
-                                className="flex mb-5 group"
+                                className="flex group"
                             >
                                 <img
                                     src="/images/logo_black.png"

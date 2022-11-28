@@ -1,19 +1,21 @@
 import { Link } from "@inertiajs/inertia-react";
 
 export default function CardContent({
-    imageContent,
+    thumbnail,
     type,
+    typeSlug,
     name,
     authorName,
     authorImage,
     likes,
     slug,
+    code,
 }) {
     return (
         <li className="relative flex h-[250px] md:h-[400px] w-full md:w-auto grow cursor-pointer group overflow-hidden">
             <img
-                src={imageContent}
-                alt=""
+                src={thumbnail}
+                alt={name}
                 className="object-cover w-full h-full align-middle rounded"
             />
             <div className="absolute top-0 left-0 flex items-center w-full h-full text-white transition-all ease-in-out scale-0 rounded overlay bg-slate-900/50 group-hover:scale-100">
@@ -42,7 +44,7 @@ export default function CardContent({
                 </div>
             </div>
             <Link
-                href={route("prototype.detail")}
+                href={route("detail", [typeSlug, slug, code])}
                 className="absolute inset-0 z-10"
             ></Link>
         </li>

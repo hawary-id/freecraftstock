@@ -1,8 +1,8 @@
 import CardSimilar from "./CardSimilar";
 
-export default function DetailSimilar(second) {
+export default function DetailSimilar(similars) {
     return (
-        <div className="col-span-1 px-3 py-3 border-t md:col-span-4 md:px-0">
+        <div className="col-span-1 px-3 py-3 border-t md:px-0 md:col-span-4">
             <div className="flex items-center justify-between">
                 <div className="text-sm font-light text-slate-500">
                     Similars
@@ -15,16 +15,16 @@ export default function DetailSimilar(second) {
                 </a>
             </div>
             <div className="flex w-full gap-4 py-4 overflow-x-auto">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+                {similars.similars.map((similar) => (
                     <CardSimilar
-                        key={i}
-                        thumbnail={`https://picsum.photos/500/700?random=${i}`}
-                        type="Vectors"
-                        name="Free vectors border blue"
-                        authorName="Freecraftstock"
-                        authorImage={`https://picsum.photos/300/300?random=${i}`}
-                        likes="150"
-                        slug="slug"
+                        key={similar.id}
+                        thumbnail={similar.thumbnail}
+                        type={similar.type.name}
+                        name={similar.name}
+                        authorName={similar.user.name}
+                        authorImage={similar.user.thumbnail}
+                        likes={similar.like}
+                        slug={similar.slug}
                     />
                 ))}
             </div>

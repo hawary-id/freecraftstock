@@ -1,9 +1,9 @@
 import MainRecommended from "./MainRecommended";
 
-export default function MainBanner() {
+export default function MainBanner({ recommended }) {
     return (
         <>
-            <div className="flex flex-col w-full h-64 md:h-[500px] px-3 lg:px-52 mt-10 md:mt-14 justify-center items-center text-center text-white bg-gradient-to-b from-blue-700 via-blue-600 to-blue-500">
+            <div className="flex flex-col w-full h-60 md:h-[500px] px-3 lg:px-52 mt-11 md:mt-14 justify-center items-center text-center text-white bg-gradient-to-b from-blue-700 via-blue-600 to-blue-500">
                 <h1 className="text-xl font-bold md:text-3xl">
                     Discover over 1 million free vector, photos, icon, PNG and
                     others
@@ -41,10 +41,8 @@ export default function MainBanner() {
                         </span>
                     </label>
                 </form>
-                <div className="flex justify-center w-full gap-3 py-3 md:py-4">
-                    {[1, 2, 3].map((i) => (
-                        <MainRecommended key={i} title="Vectors" slug="slug" />
-                    ))}
+                <div className="flex justify-center w-full gap-3 py-3 overflow-x-auto md:py-4">
+                    <MainRecommended keyword={recommended.keyword} />
                 </div>
             </div>
         </>

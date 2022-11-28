@@ -1,7 +1,7 @@
 import CardContent from "@/Components/CardContent";
 import { useRef, useState } from "react";
 
-export default function Content({ title }) {
+export default function Content({ title, contents }) {
     const [filter, setFilter] = useState(true);
     const filterTarget = useRef();
 
@@ -18,7 +18,7 @@ export default function Content({ title }) {
             <div className="w-full">
                 {title && (
                     <div className="px-3 mt-20 mb-3 text-2xl text-center text-slate-900 md:mt-24 md:px-6">
-                        {title}
+                        Free {title}
                     </div>
                 )}
                 <div className="flex justify-end px-3 mb-2 md:mb-5 md:px-6">
@@ -49,16 +49,18 @@ export default function Content({ title }) {
                 </div>
                 <div className="justify-center w-full px-3 mb-16 md:mb-5 md:px-6">
                     <ul className="flex flex-wrap gap-4 image-gallery">
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+                        {contents.map((content) => (
                             <CardContent
-                                key={i}
-                                imageContent={`https://picsum.photos/500/700?random=${i}`}
-                                type="Vectors"
-                                name="Free vectors border blue"
-                                authorName="Freecraftstock"
-                                authorImage="/images/avatar.png"
-                                likes="150"
-                                slug="slug"
+                                key={content.id}
+                                thumbnail={content.thumbnail}
+                                type={content.type.name}
+                                typeSlug={content.type.slug}
+                                name={content.name}
+                                authorName={content.user.name}
+                                authorImage={content.user.thumbnail}
+                                likes={content.like}
+                                slug={content.slug}
+                                code={content.code}
                             />
                         ))}
                     </ul>

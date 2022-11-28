@@ -1,7 +1,10 @@
 import { Link } from "@inertiajs/inertia-react";
-import { useState, useRef } from "react";
+import { data } from "autoprefixer";
+import { useRef, useState } from "react";
+import Avatar from "./Avatar";
 import NavbarCategory from "./NavbarCategory";
-export default function Navbar() {
+
+export default function Navbar({ auth, categories, types, title }) {
     const [smallMenu, setSmallMenu] = useState(true);
     const smallMenuTarget = useRef();
 
@@ -25,6 +28,25 @@ export default function Navbar() {
         }
         setSmallCategory(!smallCategory);
     };
+    const Auth = () => {
+        if (auth.user === null) {
+            return (
+                <div className="flex items-center justify-end gap-3 md:w-full">
+                    <Link href={route("login")} className="nav-link">
+                        Sign In
+                    </Link>
+                    <Link
+                        href={route("register")}
+                        className="px-2 py-1 border rounded-md nav-link text-slate-50 hover:text-slate-200 hover:bg-blue-700 hover:border hover:border-slate-300 hover:ring hover:ring-offset-1 hover:ring-sky-300"
+                    >
+                        Sign Up
+                    </Link>
+                </div>
+            );
+        } else {
+            return <Avatar avatar={auth} style="right-3 top-12" />;
+        }
+    };
     return (
         <>
             <div className="flex items-center justify-between w-full px-3 py-2 text-gray-400 shadow md:px-6 md:justify-start bg-slate-800 rounded-b-md md:rounded-none">
@@ -43,25 +65,25 @@ export default function Navbar() {
                         ></div>
                     </div>
                     <ul className="flex flex-col px-6">
-                        <li className="py-3 hover:text-white">
-                            <Link href={route("prototype.vectors")}>
-                                Vectors
-                            </Link>
-                        </li>
-                        <li className="py-3 hover:text-white">
-                            <Link href={route("prototype.photos")}>Photos</Link>
-                        </li>
-                        <li className="py-3 hover:text-white">
-                            <Link href={route("prototype.png")}>PNG</Link>
-                        </li>
-                        <li className="py-3 hover:text-white">
-                            <Link href={route("prototype.psd")}>PSD</Link>
-                        </li>
-                        <li className="py-3 hover:text-white">
-                            <Link href={route("prototype.tutorials")}>
-                                Tutorials
-                            </Link>
-                        </li>
+                        {types.type.map((data) =>
+                            title == data.name ? (
+                                <li className="py-3 text-white" key={data.id}>
+                                    <Link href={route("type", data.slug)}>
+                                        {data.name}
+                                    </Link>
+                                </li>
+                            ) : (
+                                <li
+                                    className="py-3 hover:text-white"
+                                    key={data.id}
+                                >
+                                    <Link href={route("type", data.slug)}>
+                                        {data.name}
+                                    </Link>
+                                </li>
+                            )
+                        )}
+
                         <li className="py-3">
                             <div
                                 className="flex justify-between w-full"
@@ -74,13 +96,11 @@ export default function Navbar() {
                                 className="flex flex-col hidden gap-3 p-3"
                                 ref={smallCategoryTarget}
                             >
-                                {[
-                                    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-                                ].map((i) => (
+                                {categories.category.map((data) => (
                                     <NavbarCategory
-                                        key={i}
-                                        title="Animal"
-                                        slug="animal"
+                                        key={data.id}
+                                        title={data.name}
+                                        slug={data.slug}
                                     />
                                 ))}
                             </div>
@@ -88,52 +108,39 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <ul className="hidden gap-5 md:flex">
-                    <li className="nav-link active">
-                        <Link href={route("prototype.vectors")}>Vectors</Link>
-                    </li>
-                    <li className="nav-link">
-                        <Link href={route("prototype.photos")}>Photos</Link>
-                    </li>
-                    <li className="nav-link">
-                        <Link href={route("prototype.png")}>PNG</Link>
-                    </li>
-                    <li className="nav-link">
-                        <Link href={route("prototype.psd")}>PSD</Link>
-                    </li>
-                    <li className="nav-link">
-                        <Link href={route("prototype.tutorials")}>
-                            Tutorials
-                        </Link>
-                    </li>
+                    {types.type.map((data) =>
+                        title == data.name ? (
+                            <li className="nav-link active" key={data.id}>
+                                <Link href={route("type", data.slug)}>
+                                    {data.name}
+                                </Link>
+                            </li>
+                        ) : (
+                            <li className="nav-link" key={data.id}>
+                                <Link href={route("type", data.slug)}>
+                                    {data.name}
+                                </Link>
+                            </li>
+                        )
+                    )}
+
                     <li className="w-24 nav-link group">
                         <div className="cursor-pointer">
                             Categories{" "}
                             <span className="bi bi-caret-down-fill"></span>
                         </div>
                         <div className="absolute z-50 hidden float-left grid-flow-col grid-rows-4 gap-4 p-6 pt-6 text-left rounded shadow-lg drowpdown-menu bg-slate-800 group-hover:grid min-w-max font-sm text-slate-300">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map(
-                                (i) => (
-                                    <NavbarCategory
-                                        key={i}
-                                        title="Animal"
-                                        slug="animal"
-                                    />
-                                )
-                            )}
+                            {categories.category.map((data) => (
+                                <NavbarCategory
+                                    key={data.id}
+                                    title={data.name}
+                                    slug={data.slug}
+                                />
+                            ))}
                         </div>
                     </li>
                 </ul>
-                <div className="flex items-center justify-end gap-3 md:w-full">
-                    <Link href={route("prototype.login")} className="nav-link">
-                        Log In
-                    </Link>
-                    <Link
-                        href={route("prototype.register")}
-                        className="px-2 py-1 border rounded-md nav-link border-slate-100 text-slate-100 hover:text-slate-600 hover:bg-slate-300 hover:border hover:border-slate-300 hover:ring hover:ring-offset-1 hover:ring-sky-300"
-                    >
-                        Sign Up
-                    </Link>
-                </div>
+                <Auth />
             </div>
         </>
     );

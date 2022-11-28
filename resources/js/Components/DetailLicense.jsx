@@ -1,4 +1,4 @@
-export default function DetailLicense(second) {
+export default function DetailLicense({ type }) {
     return (
         <div className="flex-col hidden w-full px-3 mb-4 md:flex md:px-0">
             <p className="mb-2 text-sm text-slate-500 font-semilight">
@@ -16,7 +16,7 @@ export default function DetailLicense(second) {
             </p>
             <p className="text-sm text-slate-500 font-semilight">
                 <span className="mr-1 bi bi-file-earmark"></span>
-                File type :
+                File type : {type}
                 <a href="" className="ml-2 text-sky-500 hover:text-sky-600">
                     How to edit?
                 </a>

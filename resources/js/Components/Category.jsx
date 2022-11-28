@@ -1,6 +1,6 @@
 import CategoryItems from "@/Components/CategoryItems";
 
-export default function Category() {
+export default function Category({ types }) {
     return (
         <>
             <div className="flex flex-col w-full mt-5 md:mt-14 lg:px-52">
@@ -8,12 +8,12 @@ export default function Category() {
                     Find Your Inspiration Here
                 </h1>
                 <div className="flex gap-8 p-6 overflow-x-auto text-center md:gap-14 md:p-10">
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                    {types.map((type) => (
                         <CategoryItems
-                            key={i}
-                            slug={`vector-${i}`}
-                            name={`Vector ${i}`}
-                            thumbnail="https://picsum.photos/150/150?random"
+                            key={type.id}
+                            slug={type.slug}
+                            name={type.name}
+                            thumbnail={type.thumbnail}
                         />
                     ))}
                 </div>
