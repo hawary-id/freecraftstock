@@ -2,16 +2,15 @@ import Footer from "@/Components/Footer";
 import FooterSmall from "@/Components/FooterSmall";
 import Navbar from "@/Components/Navbar";
 import Search from "@/Components/Search";
-import Content from "@/Layouts/Content";
+import ContentResult from "@/Layouts/ContentResult";
 
-export default function Type({
+export default function SearchResult({
     auth,
     contents,
     categoryList,
     recommendedSearch,
     typeList,
     title,
-    sort,
 }) {
     return (
         <>
@@ -30,12 +29,7 @@ export default function Type({
                 {/* End:Search */}
 
                 {/* Start:Content */}
-                <Content
-                    title={title}
-                    contents={contents}
-                    sort={sort}
-                    link="type"
-                />
+                <ContentResult title={title} contents={contents} />
                 {/* End:Content */}
 
                 {/* Start:Footer */}

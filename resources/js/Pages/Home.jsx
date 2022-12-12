@@ -1,18 +1,20 @@
 import CardContent from "@/Components/CardContent";
-import Category from "@/Components/Category";
+import Type from "@/Components/Type";
 import FooterSmall from "@/Components/FooterSmall";
 import MainBanner from "@/Components/MainBanner";
 import MainFooter from "@/Components/MainFooter";
 import MainNavbar from "@/Components/MainNavbar";
-import Pagination from "@/Components/Pagination";
+import { Link } from "@inertiajs/inertia-react";
+import MainContent from "@/Components/MainContent";
+import MainCategory from "@/Components/MainCategory";
 
 export default function Home({
     auth,
-    types,
     contents,
     categoryList,
     recommendedSearch,
     typeList,
+    categories,
 }) {
     return (
         <>
@@ -24,32 +26,25 @@ export default function Home({
                     types={typeList}
                 />
                 {/* End:Navbar */}
-                <MainBanner recommended={recommendedSearch} />
-                <Category types={types} />
-                {/* Start:Content */}
-                <div className="flex flex-col w-full px-3 lg:px-52">
-                    <h1 className="mb-3 text-xl font-semibold md:text-2xl text-slate-600 md:mb-5">
-                        Explore Popular Assets
-                    </h1>
-                    <div className="justify-center w-full mb-16 md:mb-6">
-                        <ul className="flex flex-wrap gap-4 image-gallery">
-                            {contents.map((content) => (
-                                <CardContent
-                                    key={content.id}
-                                    thumbnail={content.thumbnail}
-                                    type={content.type.name}
-                                    typeSlug={content.type.slug}
-                                    name={content.name}
-                                    authorName={content.user.name}
-                                    authorImage={content.user.thumbnail}
-                                    likes={content.like}
-                                    slug={content.slug}
-                                    code={content.code}
-                                />
-                            ))}
-                        </ul>
+                <MainBanner recommended={recommendedSearch} types={typeList} />
+                <div className="flex items-center justify-center w-full gap-2 px-4 py-4 mb-6 text-sm bg-violet-600 md:h-22 md:gap-3 text-slate-50 md:text-lg md:mb-10">
+                    <div className="">
+                        Get 1 million vector assets, photos, icons for free
                     </div>
+                    <Link
+                        href={route("register")}
+                        className="px-3 py-1 text-center bg-orange-400 border rounded-md hover:bg-orange-500 hover:ring hover:ring-blue-300"
+                    >
+                        Sign Up Free
+                    </Link>
                 </div>
+                <Type types={typeList} />
+
+                {/* Start:Category */}
+                {/* End:Category */}
+                <MainCategory categories={categories} />
+                {/* Start:Content */}
+                <MainContent contents={contents} />
                 {/* Start:MainFooter */}
                 <MainFooter />
                 {/* End:MainFooter */}

@@ -1,14 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\PngController;
-use App\Http\Controllers\PsdController;
-use App\Http\Controllers\TutorialController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TypeController;
-use App\Http\Controllers\VectorController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,8 +21,11 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('/{slug}', [TypeController::class,'index'])->name('type');
-Route::get('/{typeSlug}/{slug}/{code}', [DetailController::class,'index'])->name('detail');
+Route::get('/{slug}/{sort}', [TypeController::class,'index'])->name('type');
+Route::get('/detail/{typeSlug}/{slug}/{code}', [DetailController::class,'index'])->name('detail');
+Route::get('/category/{slug}/{sort}', [CategoryController::class,'index'])->name('category');
+Route::get('/search/', [SearchController::class,'index'])->name('search');
+Route::get('/{username}', [AuthorController::class,'index'])->name('author');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

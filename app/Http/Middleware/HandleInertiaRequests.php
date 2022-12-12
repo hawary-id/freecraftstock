@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Content;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -38,15 +39,21 @@ class HandleInertiaRequests extends Middleware
 
     public function categoryList()
     {
-        return Category::all();
+        return Cache::remember("categoryList", 300, function () {
+            return Category::all();
+        });
     }
     public function recommendedSearch()
     {
-        return Content::inRandomOrder()->limit(1)->pluck('keyword');
+        return Cache::remember("recommendedSearch", 300, function () {
+            return Content::inRandomOrder()->limit(1)->pluck('keyword');
+        });
     }
     public function TypeList()
     {
-        return Type::all();
+        return Cache::remember("typeList", 300, function () {
+            return Type::all();
+        });
     }
     public function share(Request $request)
     {

@@ -1,5 +1,4 @@
 import { Link } from "@inertiajs/inertia-react";
-import { data } from "autoprefixer";
 import { useRef, useState } from "react";
 import Avatar from "./Avatar";
 import NavbarCategory from "./NavbarCategory";
@@ -66,9 +65,14 @@ export default function Navbar({ auth, categories, types, title }) {
                     </div>
                     <ul className="flex flex-col px-6">
                         {types.type.map((data) =>
-                            title == data.name ? (
+                            title[0].name == data.name ? (
                                 <li className="py-3 text-white" key={data.id}>
-                                    <Link href={route("type", data.slug)}>
+                                    <Link
+                                        href={route("type", [
+                                            data.slug,
+                                            "populars",
+                                        ])}
+                                    >
                                         {data.name}
                                     </Link>
                                 </li>
@@ -77,7 +81,12 @@ export default function Navbar({ auth, categories, types, title }) {
                                     className="py-3 hover:text-white"
                                     key={data.id}
                                 >
-                                    <Link href={route("type", data.slug)}>
+                                    <Link
+                                        href={route("type", [
+                                            data.slug,
+                                            "populars",
+                                        ])}
+                                    >
                                         {data.name}
                                     </Link>
                                 </li>
@@ -109,15 +118,25 @@ export default function Navbar({ auth, categories, types, title }) {
                 </div>
                 <ul className="hidden gap-5 md:flex">
                     {types.type.map((data) =>
-                        title == data.name ? (
+                        title[0].name == data.name ? (
                             <li className="nav-link active" key={data.id}>
-                                <Link href={route("type", data.slug)}>
+                                <Link
+                                    href={route("type", [
+                                        data.slug,
+                                        "populars",
+                                    ])}
+                                >
                                     {data.name}
                                 </Link>
                             </li>
                         ) : (
                             <li className="nav-link" key={data.id}>
-                                <Link href={route("type", data.slug)}>
+                                <Link
+                                    href={route("type", [
+                                        data.slug,
+                                        "populars",
+                                    ])}
+                                >
                                     {data.name}
                                 </Link>
                             </li>

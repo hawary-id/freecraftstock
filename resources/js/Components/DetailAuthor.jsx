@@ -1,14 +1,14 @@
 import { Link } from "@inertiajs/inertia-react";
 
-export default function DetailAuthor({ Avatar, name, followers }) {
+export default function DetailAuthor({ avatar, name, followers, username }) {
     return (
         <div className="flex w-full gap-5 px-3 py-3 md:mb-2 md:px-0">
             <Link
-                href={route("prototype.author")}
+                href={route("author", username)}
                 className="flex items-center"
             >
                 <img
-                    src={Avatar}
+                    src={avatar}
                     className="border rounded-full h-14 w-14 border-sky-300"
                     alt=""
                 />

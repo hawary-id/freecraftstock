@@ -4,7 +4,7 @@ import Navbar from "@/Components/Navbar";
 import Search from "@/Components/Search";
 import Content from "@/Layouts/Content";
 
-export default function Type({
+export default function Category({
     auth,
     contents,
     categoryList,
@@ -34,7 +34,7 @@ export default function Type({
                     title={title}
                     contents={contents}
                     sort={sort}
-                    link="type"
+                    link="category"
                 />
                 {/* End:Content */}
 

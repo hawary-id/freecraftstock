@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/inertia-react";
 export default function NavbarCategory({ slug, title }) {
     return (
         <Link
-            href={route("prototype.category")}
+            href={route("category", [slug, "populars"])}
             className="mr-10 hover:text-white"
         >
             {title}

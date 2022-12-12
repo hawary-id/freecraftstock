@@ -1,11 +1,17 @@
-export default function AuthorDetail(second) {
+export default function AuthorDetail({
+    author,
+    followers,
+    assets,
+    favorites,
+    downloads,
+}) {
     return (
         <a
             href="author.html"
             className="flex items-center mb-3 md:justify-between md:mb-0"
         >
             <img
-                src="/images/avatar.png"
+                src={author.thumbnail}
                 className="w-16 h-16 border-2 rounded-full border-sky-300 "
                 alt=""
             />
@@ -14,13 +20,13 @@ export default function AuthorDetail(second) {
                     Freecraftstock
                 </div>
                 <small className="text-sm font-light text-slate-400">
-                    1,000 Followers
+                    {followers} Followers
                 </small>
             </div>
             <div className="hidden mx-0 text-center divide-x md:flex md:mx-24">
                 <div className="flex flex-col justify-center px-2">
                     <div className="text-base font-semibold text-slate-700">
-                        1k
+                        {assets}
                     </div>
                     <div className="text-sm font-light text-slate-400">
                         Assets
@@ -29,7 +35,7 @@ export default function AuthorDetail(second) {
 
                 <div className="flex flex-col justify-center px-2">
                     <div className="text-base font-semibold text-slate-700">
-                        1,25k
+                        {favorites}
                     </div>
                     <div className="text-sm font-light text-slate-400">
                         Favorites
@@ -37,7 +43,7 @@ export default function AuthorDetail(second) {
                 </div>
                 <div className="flex flex-col justify-center px-2">
                     <div className="text-base font-semibold text-slate-700">
-                        1,25k
+                        {downloads}
                     </div>
                     <div className="text-sm font-light text-slate-400">
                         Downloads

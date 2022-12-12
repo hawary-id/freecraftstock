@@ -1,6 +1,6 @@
 import CardContent from "@/Components/CardContent";
 import MainNavbar from "@/Components/MainNavbar";
-import Category from "../Components/Category";
+import Category from "../Components/Type";
 import FooterSmall from "../Components/FooterSmall";
 import MainBanner from "../Components/MainBanner";
 import MainFooter from "../Components/MainFooter";

@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/inertia-react";
 import { useEffect, useState } from "react";
 import SearchRecommended from "./SearchRecommended";
 
-export default function Search({ recommended }) {
+export default function Search({ recommended, types }) {
     const [scroll, setScroll] = useState(false);
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -29,32 +29,34 @@ export default function Search({ recommended }) {
                     </span>
                 </Link>
                 <form
-                    method="POST"
-                    action=""
+                    action={route("search")}
+                    method="GET"
                     className="flex justify-center grow text-slate-600"
                 >
                     <label className="relative flex w-full">
-                        <select className="hidden px-1 py-2 border md:block border-slate-300 rounded-l-md md:pl-2 md:pr-7 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm">
-                            <option value="">All</option>
-                            <option value="">Vectors</option>
-                            <option value="">Photos</option>
-                            <option value="">PNG</option>
-                            <option value="">PSD</option>
-                            <option value="">Tutorials</option>
+                        <select
+                            className="px-1 py-2 border rounded-r-none border-slate-300 rounded-l-md md:pl-2 md:pr-7 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                            name="type"
+                        >
+                            <option value="All">All</option>
+                            {types.type.map((data) => (
+                                <option value={data.slug} key={data.id}>
+                                    {data.name}
+                                </option>
+                            ))}
                         </select>
                         <input
-                            className="block w-full px-3 py-2 text-sm bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 placeholder:text-sm placeholder:font-light border-slate-300 md:rounded-l-none md:rounded-r-md md:px-5 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
+                            className="block w-full px-3 py-2 text-sm bg-white border rounded-md rounded-l-none shadow-sm placeholder:italic placeholder:text-slate-400 placeholder:text-sm placeholder:font-light border-slate-300 md:rounded-l-none md:rounded-r-md md:px-5 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
                             placeholder="Search for anything..."
                             type="text"
-                            name="search"
+                            name="value"
                         />
                         <span className="sr-only">Search</span>
                         <span className="absolute inset-y-0 flex items-center pr-2 right-1 md:right-2">
-                            <a
-                                href=""
+                            <button
                                 type="submit"
                                 className="bi bi-search text-slate-400"
-                            ></a>
+                            ></button>
                         </span>
                     </label>
                 </form>

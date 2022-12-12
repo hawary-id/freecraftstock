@@ -8,9 +8,9 @@ use Inertia\Inertia;
 
 class DetailController extends Controller
 {
-    public function index($typeSlug,$slug,$code)
+    public function index($typeSlug, $slug, $code)
     {
-        $similars = Content::with('type', 'user')->where('slug', $slug)->where('code','!=',$code)->get();
+        $similars = Content::with('type', 'user')->where('slug', $slug)->where('code', '!=', $code)->get();
         $content = Content::with('type', 'user')->where('code', $code)->get();
         return Inertia::render('Detail', [
             'similars'=> $similars,

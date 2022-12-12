@@ -65,7 +65,12 @@ export default function MainNavbar({ auth, categories, types }) {
                     <ul className="flex flex-col px-6">
                         {types.type.map((data) => (
                             <li className="py-3 hover:text-white" key={data.id}>
-                                <Link href={route("type", data.slug)}>
+                                <Link
+                                    href={route("type", [
+                                        data.slug,
+                                        "populars",
+                                    ])}
+                                >
                                     {data.name}
                                 </Link>
                             </li>
@@ -104,7 +109,7 @@ export default function MainNavbar({ auth, categories, types }) {
                 <ul className="hidden gap-5 ml-10 md:flex">
                     {types.type.map((data) => (
                         <li className="py-5 nav-link" key={data.id}>
-                            <Link href={route("type", data.slug)}>
+                            <Link href={route("type", [data.slug, "populars"])}>
                                 {data.name}
                             </Link>
                         </li>

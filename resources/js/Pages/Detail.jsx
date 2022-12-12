@@ -49,8 +49,9 @@ export default function Detail({ content, similars }) {
                         <DetailButton />
                         <DetailDownload />
                         <DetailAuthor
-                            Avatar={Content.user.thumbnail}
+                            avatar={Content.user.thumbnail}
                             name={Content.user.name}
+                            username={Content.user.username}
                             followers="967"
                         />
                     </div>
