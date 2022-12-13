@@ -28,7 +28,7 @@ export default function Author({
                     types={typeList}
                     title="vectors"
                 />
-                <SearchAuthorAll types={typeList} />
+                <SearchAuthorAll types={typeList} username={author.username} />
 
                 <div className="flex flex-col">
                     <div className="flex flex-col w-full px-3 py-5 mb-2 bg-white border-b md:flex-row md:justify-center md:px-0">
@@ -46,13 +46,9 @@ export default function Author({
                         />
                         <AuthorFollow />
                     </div>
-                    <AuthorSearch />
+                    <AuthorSearch username={author.username} />
                     <div className="w-full">
-                        <Content
-                            contents={contents}
-                            sort="populars"
-                            link="category"
-                        />
+                        <Content contents={contents} />
                     </div>
                 </div>
                 <Footer />

@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/inertia-react";
 import { useEffect, useRef, useState } from "react";
 
-export default function SearchAuthorAll({ types }) {
+export default function SearchAuthorAll({ types, username }) {
     const [scroll, setScroll] = useState(false);
     const searchTarget = useRef();
     const hideTarget = useRef();
@@ -72,24 +72,30 @@ export default function SearchAuthorAll({ types }) {
             >
                 <div className="flex items-center w-full px-3 py-2 border-b md:px-6">
                     <form
-                        method="POST"
-                        action=""
+                        action={route("search")}
+                        method="GET"
                         className="flex justify-center w-full text-slate-600"
                     >
+                        <input
+                            type="hidden"
+                            name="username"
+                            value={username}
+                        ></input>
+                        <input type="hidden" name="type" value="author"></input>
                         <label className="relative flex justify-end w-full">
                             <input
                                 className="block w-full px-3 py-2 text-sm bg-white border rounded-md shadow-sm placeholder:italic placeholder:text-slate-400 placeholder:text-sm placeholder:font-light md:w-72 border-slate-300 md:px-5 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
                                 placeholder="Search author assets"
                                 type="text"
-                                name="search"
+                                name="value"
                             />
+
                             <span className="sr-only">Search</span>
                             <span className="absolute inset-y-0 flex items-center pr-2 right-1 md:right-2">
-                                <a
-                                    href=""
+                                <button
                                     type="submit"
                                     className="bi bi-search text-slate-400"
-                                ></a>
+                                ></button>
                             </span>
                         </label>
                     </form>
