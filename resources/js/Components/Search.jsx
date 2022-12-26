@@ -21,12 +21,10 @@ export default function Search({ recommended, types }) {
             <div className="flex items-center w-full px-3 py-2 border-b md:px-6">
                 <Link
                     href={route("home")}
-                    className="flex items-center mr-3 text-2xl font-semibold text-slate-500"
+                    className="items-center hidden mr-3 text-2xl font-semibold md:flex text-slate-500"
                 >
                     <img src="/images/logo_black.png" className="h-8" />
-                    <span className="hidden ml-2 md:block text-sky-400">
-                        Freecraftstock
-                    </span>
+                    <span className="ml-2 text-sky-400">Freecraftstock</span>
                 </Link>
                 <form
                     action={route("search")}

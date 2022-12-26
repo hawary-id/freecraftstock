@@ -7,6 +7,7 @@ use App\Models\Content;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -74,6 +75,10 @@ class HandleInertiaRequests extends Middleware
             ],
             'typeList' => [
                 'type' => $this->TypeList(),
+            ],
+            'flashMessage' => [
+                'message' => Session::get('message'),
+                'type' => Session::get('type'),
             ]
         ]);
     }

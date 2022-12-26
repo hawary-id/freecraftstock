@@ -44,17 +44,14 @@ export default function Register() {
 
                 <div className="relative flex w-full h-screen md:w-2/5">
                     <Link
-                        href={route("prototype.home")}
+                        href={route("home")}
                         className="absolute block px-3 py-2 text-white bg-purple-400 rounded-full md:hidden top-6 left-6 hover:bg-purple-500"
                     >
                         <span className="bi bi-chevron-left"></span>
                     </Link>
                     <div className="flex flex-col self-center w-full px-6 md:px-12">
                         <div className="flex flex-col items-start w-full mb-8">
-                            <Link
-                                href={route("prototype.home")}
-                                className="flex group"
-                            >
+                            <Link href={route("home")} className="flex group">
                                 <img
                                     src="/images/logo_black.png"
                                     className="h-10 mr-2 rounded-full group-hover:ring group-hover:ring-sky-200"

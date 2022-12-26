@@ -7,7 +7,7 @@ export default function AuthorDetail({
 }) {
     return (
         <a
-            href="author.html"
+            href=""
             className="flex items-center mb-3 md:justify-between md:mb-0"
         >
             <img
@@ -17,7 +17,7 @@ export default function AuthorDetail({
             />
             <div className="flex flex-col ml-3">
                 <div className="text-base font-semibold text-sky-400">
-                    Freecraftstock
+                    {author.name}
                 </div>
                 <small className="text-sm font-light text-slate-400">
                     {followers} Followers

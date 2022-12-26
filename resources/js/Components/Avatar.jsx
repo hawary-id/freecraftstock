@@ -28,13 +28,13 @@ export default function Avatar({ avatar, style }) {
                     className={`rounded-xl text-slate-50 font-medium flex hidden flex-col absolute z-[999] ${style} min-w-[180px] overflow-hidden bg-slate-800`}
                     ref={profileTarget}
                 >
-                    <a
-                        href="#!"
+                    <Link
+                        href={route("user.home")}
                         className="px-4 py-2 transition-all hover:bg-slate-700"
                     >
                         <span className="mr-2 bi bi-person-circle"></span>
                         Profile
-                    </a>
+                    </Link>
                     <a
                         href="#!"
                         className="px-4 py-2 transition-all hover:bg-slate-700"

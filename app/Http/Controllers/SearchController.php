@@ -42,6 +42,7 @@ class SearchController extends Controller
                 'followers'=>$followers,
                 'favorites'=>$favorites,
                 'downloads'=>$downloads,
+                'search' =>$value,
             ]);
         }
         if ($type != "All") {

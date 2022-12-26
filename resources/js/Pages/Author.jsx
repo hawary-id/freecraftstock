@@ -18,6 +18,8 @@ export default function Author({
     followers,
     favorites,
     downloads,
+    search,
+    follow,
 }) {
     return (
         <>
@@ -44,11 +46,15 @@ export default function Author({
                             favorites={favorites}
                             downloads={downloads}
                         />
-                        <AuthorFollow />
+                        <AuthorFollow
+                            authorId={author.id}
+                            follow={follow}
+                            authId={auth.user.id}
+                        />
                     </div>
                     <AuthorSearch username={author.username} />
                     <div className="w-full">
-                        <Content contents={contents} />
+                        <Content contents={contents} search={search} />
                     </div>
                 </div>
                 <Footer />

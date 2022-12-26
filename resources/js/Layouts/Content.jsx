@@ -2,7 +2,7 @@ import CardContent from "@/Components/CardContent";
 import FilterDropdown from "@/Components/FilterDropdown";
 import { useRef, useState } from "react";
 
-export default function Content({ title, contents, sort, link }) {
+export default function Content({ title, contents, sort, link, search }) {
     const filterTarget = useRef(true);
     const [filter, setFilter] = useState(true);
 
@@ -18,6 +18,7 @@ export default function Content({ title, contents, sort, link }) {
     const Capitalize = (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
+
     return (
         <div className={title ? "flex mt-14" : "flex"}>
             <div className="w-full">
@@ -50,6 +51,14 @@ export default function Content({ title, contents, sort, link }) {
                             </div>
                         </div>
                     </>
+                )}
+                {search && (
+                    <div className="w-full px-2 py-3 md:px-6">
+                        <div className="text-lg text-slate-600">
+                            Free download
+                            <span className="font-semibold"> "{search}"</span>
+                        </div>
+                    </div>
                 )}
 
                 <div className="justify-center w-full px-3 mb-16 md:mb-5 md:px-6">

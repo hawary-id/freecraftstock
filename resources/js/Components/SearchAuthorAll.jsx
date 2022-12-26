@@ -18,7 +18,7 @@ export default function SearchAuthorAll({ types, username }) {
             <div className="flex flex-col items-center justify-between w-full bg-white shadow">
                 <div className="flex items-center w-full px-3 py-2 border-b md:px-6">
                     <Link
-                        href={route("prototype.home")}
+                        href={route("home")}
                         className="flex items-center mr-3 text-2xl font-semibold text-slate-500"
                     >
                         <img src="/images/logo_black.png" className="h-8" />

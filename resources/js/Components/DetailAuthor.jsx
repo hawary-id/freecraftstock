@@ -1,6 +1,13 @@
 import { Link } from "@inertiajs/inertia-react";
 
-export default function DetailAuthor({ avatar, name, followers, username }) {
+export default function DetailAuthor({
+    avatar,
+    name,
+    followers,
+    username,
+    authorId,
+    follow,
+}) {
     return (
         <div className="flex w-full gap-5 px-3 py-3 md:mb-2 md:px-0">
             <Link
@@ -21,11 +28,25 @@ export default function DetailAuthor({ avatar, name, followers, username }) {
                     </small>
                 </div>
             </Link>
-            <Link href="" className="flex items-center text-center grow">
-                <div className="py-1 border rounded grow bg-slate-200 border-slate-300 hover:bg-slate-300">
-                    Follow
-                </div>
-            </Link>
+            {follow ? (
+                <Link
+                    href={route("user.unfollow", authorId)}
+                    className="flex items-center text-center grow"
+                >
+                    <div className="py-1 text-white border rounded border-slate-400 grow bg-slate-400 hover:bg-slate-300 hover:text-slate-600">
+                        Unfollow
+                    </div>
+                </Link>
+            ) : (
+                <Link
+                    href={route("user.follow", authorId)}
+                    className="flex items-center text-center grow"
+                >
+                    <div className="py-1 border rounded border-slate-300 grow bg-slate-200 hover:bg-slate-300">
+                        Follow
+                    </div>
+                </Link>
+            )}
         </div>
     );
 }

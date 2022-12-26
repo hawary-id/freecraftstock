@@ -1,10 +1,15 @@
 import { Link } from "@inertiajs/inertia-react";
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import Avatar from "./Avatar";
 import NavbarCategory from "./NavbarCategory";
-export default function MainNavbar({ auth, categories, types }) {
+
+export default function NavbarUser({ auth, categories, types, title }) {
     const [smallMenu, setSmallMenu] = useState(true);
     const smallMenuTarget = useRef();
+
+    const [smallCategory, setSmallCategory] = useState(true);
+    const smallCategoryTarget = useRef();
+
     const triggerSmallMenu = () => {
         if (smallMenu) {
             smallMenuTarget.current.classList.remove("hidden");
@@ -14,8 +19,6 @@ export default function MainNavbar({ auth, categories, types }) {
         setSmallMenu(!smallMenu);
     };
 
-    const [smallCategory, setSmallCategory] = useState(true);
-    const smallCategoryTarget = useRef();
     const triggerSmallCategory = () => {
         if (smallCategory) {
             smallCategoryTarget.current.classList.remove("hidden");
@@ -24,7 +27,6 @@ export default function MainNavbar({ auth, categories, types }) {
         }
         setSmallCategory(!smallCategory);
     };
-
     const Auth = () => {
         if (auth.user === null) {
             return (
@@ -44,10 +46,9 @@ export default function MainNavbar({ auth, categories, types }) {
             return <Avatar avatar={auth} style="right-3 top-12" />;
         }
     };
-
     return (
         <>
-            <div className="fixed top-0 z-50 flex items-center justify-between w-full px-3 py-2 bg-blue-700 navbar lg:px-52 md:py-0 md:justify-start text-slate-300 rounded-b-md md:rounded-none">
+            <div className="flex items-center justify-between w-full px-3 py-2 text-gray-400 shadow md:px-6 md:justify-start bg-slate-800 rounded-b-md md:rounded-none">
                 <div
                     className="block text-2xl cursor-pointer bi bi-list md:hidden"
                     onClick={triggerSmallMenu}
@@ -99,36 +100,28 @@ export default function MainNavbar({ auth, categories, types }) {
                         </li>
                     </ul>
                 </div>
-                <Link
-                    href={route("home")}
-                    className="hidden mr-2 text-2xl font-semibold text-white md:flex"
-                >
-                    <img src="/images/logo.png" className="h-8" />
-                    <span className="ml-2">Freecraftstock</span>
-                </Link>
-                <ul className="hidden gap-5 ml-10 md:flex">
+                <ul className="hidden gap-5 md:flex">
                     {types.type.map((data) => (
-                        <li className="py-5 nav-link" key={data.id}>
+                        <li className="nav-link" key={data.id}>
                             <Link href={route("type", [data.slug, "populars"])}>
                                 {data.name}
                             </Link>
                         </li>
                     ))}
-                    <li className="w-24 py-5 nav-link group">
-                        <a href="">
+
+                    <li className="w-24 nav-link group">
+                        <div className="cursor-pointer">
                             Categories{" "}
                             <span className="bi bi-caret-down-fill"></span>
-                        </a>
-                        <div className="absolute z-30 hidden grid-flow-col grid-rows-4 gap-4 p-6 mt-5 text-left rounded shadow-lg drowpdown-menu bg-slate-800 group-hover:grid min-w-max font-sm text-slate-300">
-                            <div className="absolute z-50 hidden float-left grid-flow-col grid-rows-4 gap-4 p-6 pt-6 text-left rounded shadow-lg drowpdown-menu bg-slate-800 group-hover:grid min-w-max font-sm text-slate-300">
-                                {categories.category.map((data) => (
-                                    <NavbarCategory
-                                        key={data.id}
-                                        title={data.name}
-                                        slug={data.slug}
-                                    />
-                                ))}
-                            </div>
+                        </div>
+                        <div className="absolute z-50 hidden float-left grid-flow-col grid-rows-4 gap-4 p-6 pt-6 text-left rounded shadow-lg drowpdown-menu bg-slate-800 group-hover:grid min-w-max font-sm text-slate-300">
+                            {categories.category.map((data) => (
+                                <NavbarCategory
+                                    key={data.id}
+                                    title={data.name}
+                                    slug={data.slug}
+                                />
+                            ))}
                         </div>
                     </li>
                 </ul>

@@ -6,6 +6,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -21,15 +22,29 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('/{slug}/{sort}', [TypeController::class,'index'])->name('type');
+Route::get('/author/{username}', [AuthorController::class,'index'])->name('author');
+Route::get('/type/{slug}/{sort}', [TypeController::class,'index'])->name('type');
 Route::get('/detail/{typeSlug}/{slug}/{code}', [DetailController::class,'index'])->name('detail');
 Route::get('/category/{slug}/{sort}', [CategoryController::class,'index'])->name('category');
 Route::get('/search/', [SearchController::class,'index'])->name('search');
-Route::get('/{username}', [AuthorController::class,'index'])->name('author');
+
+Route::prefix('user')->middleware(['auth', 'verified'])->name('user.')->group(function () {
+   Route::get('/profile', [UserController::class,'index'])->name('home');
+   Route::get('/collect/{id}', [UserController::class,'collect'])->name('collect');
+   Route::get('/uncollect/{id}', [UserController::class,'uncollect'])->name('uncollect');
+   Route::get('/like/{id}', [UserController::class,'like'])->name('like');
+   Route::get('/unlike/{id}', [UserController::class,'unlike'])->name('unlike');
+   Route::get('/follow/{id}', [UserController::class,'follow'])->name('follow');
+   Route::get('/unfollow/{id}', [UserController::class,'unfollow'])->name('unfollow');
+   Route::get('/download', [UserController::class,'download'])->name('download');
+   Route::post('/profile/update/{id}', [UserController::class,'update'])->name('update');
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::prefix('prototype')->name('prototype.')->group(function () {
     route::get('/', function () {

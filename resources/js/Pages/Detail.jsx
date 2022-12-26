@@ -9,8 +9,14 @@ import DetailSmallAds from "@/Components/DetailSmallAds";
 import DetailSmallButton from "@/Components/DetailSmallButton";
 import { Link } from "@inertiajs/inertia-react";
 
-export default function Detail({ content, similars }) {
-    const Content = content[0];
+export default function Detail({
+    content,
+    similars,
+    followers,
+    collect,
+    like,
+    follow,
+}) {
     function onBack() {
         window.history.back();
     }
@@ -25,14 +31,18 @@ export default function Detail({ content, similars }) {
             <div className="absolute w-full px-0 py-3 overflow-x-hidden overflow-y-auto bg-white rounded-lg md:w-4/5 top-10 md:top-4 md:p-3 inset-y-10">
                 <div className="grid grid-cols-1 md:grid-cols-3">
                     <div className="col-span-1 md:col-span-2">
-                        <DetailContent thumbnail={Content.thumbnail} />
-                        <DetailSmallButton />
-                        <DetailSmallAds type={Content.type.name} />
+                        <DetailContent thumbnail={content.thumbnail} />
+                        <DetailSmallButton
+                            contentId={content.id}
+                            collect={collect}
+                            like={like}
+                        />
+                        <DetailSmallAds type={content.type.name} />
                         <DetailDescription
-                            title={Content.name}
-                            desc={Content.description}
-                            id={Content.code}
-                            keyword={Content.keyword}
+                            title={content.name}
+                            desc={content.description}
+                            id={content.code}
+                            keyword={content.keyword}
                         />
                     </div>
 
@@ -45,14 +55,20 @@ export default function Detail({ content, similars }) {
                                 alt=""
                             />
                         </div>
-                        <DetailLicense type={Content.type.name} />
-                        <DetailButton />
+                        <DetailLicense type={content.type.name} />
+                        <DetailButton
+                            contentId={content.id}
+                            collect={collect}
+                            like={like}
+                        />
                         <DetailDownload />
                         <DetailAuthor
-                            avatar={Content.user.thumbnail}
-                            name={Content.user.name}
-                            username={Content.user.username}
-                            followers="967"
+                            avatar={content.user.thumbnail}
+                            name={content.user.name}
+                            username={content.user.username}
+                            followers={followers}
+                            authorId={content.user_id}
+                            follow={follow}
                         />
                     </div>
                     <DetailSimilar similars={similars} />
