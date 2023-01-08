@@ -64,15 +64,15 @@ export default function NavbarUser({ auth, categories, types, title }) {
                         ></div>
                     </div>
                     <ul className="flex flex-col px-6">
-                        {types.type.map((data) => (
-                            <li className="py-3 hover:text-white" key={data.id}>
+                        {types.data.map((type) => (
+                            <li className="py-3 hover:text-white" key={type.id}>
                                 <Link
                                     href={route("type", [
-                                        data.slug,
+                                        type.slug,
                                         "populars",
                                     ])}
                                 >
-                                    {data.name}
+                                    {type.name}
                                 </Link>
                             </li>
                         ))}
@@ -89,11 +89,11 @@ export default function NavbarUser({ auth, categories, types, title }) {
                                 className="flex flex-col hidden gap-3 p-3"
                                 ref={smallCategoryTarget}
                             >
-                                {categories.category.map((data) => (
+                                {categories.data.map((category) => (
                                     <NavbarCategory
-                                        key={data.id}
-                                        title={data.name}
-                                        slug={data.slug}
+                                        key={category.id}
+                                        title={category.name}
+                                        slug={category.slug}
                                     />
                                 ))}
                             </div>
@@ -101,10 +101,10 @@ export default function NavbarUser({ auth, categories, types, title }) {
                     </ul>
                 </div>
                 <ul className="hidden gap-5 md:flex">
-                    {types.type.map((data) => (
-                        <li className="nav-link" key={data.id}>
-                            <Link href={route("type", [data.slug, "populars"])}>
-                                {data.name}
+                    {types.data.map((type) => (
+                        <li className="nav-link" key={type.id}>
+                            <Link href={route("type", [type.slug, "populars"])}>
+                                {type.name}
                             </Link>
                         </li>
                     ))}
@@ -115,11 +115,11 @@ export default function NavbarUser({ auth, categories, types, title }) {
                             <span className="bi bi-caret-down-fill"></span>
                         </div>
                         <div className="absolute z-50 hidden float-left grid-flow-col grid-rows-4 gap-4 p-6 pt-6 text-left rounded shadow-lg drowpdown-menu bg-slate-800 group-hover:grid min-w-max font-sm text-slate-300">
-                            {categories.category.map((data) => (
+                            {categories.data.map((category) => (
                                 <NavbarCategory
-                                    key={data.id}
-                                    title={data.name}
-                                    slug={data.slug}
+                                    key={category.id}
+                                    title={category.name}
+                                    slug={category.slug}
                                 />
                             ))}
                         </div>

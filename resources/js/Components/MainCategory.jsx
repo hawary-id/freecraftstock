@@ -7,14 +7,14 @@ export default function MainCategory({ categories }) {
                 Best category for you
             </h1>
             <div className="justify-center w-full">
-                <ul className="relative grid grid-flow-col grid-rows-3 gap-3 md:grid-rows-2 h-80">
-                    {categories.map((data, index) => (
+                <ul className="relative grid grid-flow-col grid-rows-3 gap-3 md:grid-rows-2 h-[400px]">
+                    {categories.map((category, index) => (
                         <CardCategory
-                            key={data.id}
+                            key={category.id}
                             id={index}
-                            thumbnail={data.thumbnail}
-                            name={data.name}
-                            slug={data.slug}
+                            thumbnail={category.thumbnail}
+                            name={category.name}
+                            slug={category.slug}
                         />
                     ))}
                 </ul>

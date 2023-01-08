@@ -20,9 +20,11 @@ export default function UserAccount({ auth }) {
     const closeAccountTrigger = (e) => {
         e.preventDefault();
         if (closeAccount) {
-            CloseAccountTarget.current.classList.remove("hidden");
+            CloseAccountTarget.current.classList.remove("scale-0");
+            CloseAccountTarget.current.classList.add("scale-100");
         } else {
-            CloseAccountTarget.current.classList.add("hidden");
+            CloseAccountTarget.current.classList.remove("scale-100");
+            CloseAccountTarget.current.classList.add("scale-0");
         }
         setcloseAccount(!closeAccount);
     };
@@ -89,7 +91,7 @@ export default function UserAccount({ auth }) {
                 </div>
             </form>
             <div
-                className="fixed inset-0 z-20 flex justify-center hidden py-24 rounded"
+                className="fixed inset-0 z-20 flex justify-center transition ease-in-out scale-0 rounded py-28 h-max"
                 ref={CloseAccountTarget}
             >
                 <div className="h-32 p-5 bg-red-300 rounded-lg shadow-md w-96">

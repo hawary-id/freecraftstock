@@ -56,6 +56,13 @@ class HandleInertiaRequests extends Middleware
             return Type::all();
         });
     }
+
+    public function recommended()
+    {
+        return Cache::remember('recommended', 300, function () {
+            return Content::with(['type','user'])->inRandomOrder()->take(10)->get();
+        });
+    }
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
@@ -68,17 +75,20 @@ class HandleInertiaRequests extends Middleware
                 ]);
             },
             'categoryList' => [
-                'category' => $this->categoryList(),
+                'data' => $this->categoryList(),
             ],
             'recommendedSearch' => [
-                'keyword' => $this->recommendedSearch(),
+                'data' => $this->recommendedSearch(),
             ],
             'typeList' => [
-                'type' => $this->TypeList(),
+                'data' => $this->TypeList(),
             ],
             'flashMessage' => [
                 'message' => Session::get('message'),
                 'type' => Session::get('type'),
+            ],
+            'recommended' => [
+                'data' => $this->recommended()
             ]
         ]);
     }

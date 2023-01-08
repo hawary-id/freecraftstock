@@ -16,7 +16,7 @@ export default function DetailAuthor({
             >
                 <img
                     src={avatar}
-                    className="border rounded-full h-14 w-14 border-sky-300"
+                    className="overflow-hidden bg-gray-200 border rounded-full h-14 w-14 border-sky-300"
                     alt=""
                 />
                 <div className="flex flex-col ml-2">

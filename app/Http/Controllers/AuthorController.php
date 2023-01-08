@@ -20,13 +20,6 @@ class AuthorController extends Controller
             ->where('user_id', $author->id)
             ->orderBy('id', 'DESC')->get();
         $assets = count($contents);
-        $followers = Follower::where('user_id', $author->id)->count();
-        $favorites = Like::with('content')->whereHas('content', function ($query) use ($author) {
-                $query->where('user_id', $author->id);
-            })->count();
-        $downloads = Download::with('content')->whereHas('content', function ($query) use ($author) {
-                $query->where('user_id', $author->id);
-            })->count();
             if(Auth::user()) {
                 $follow = Follower::where([
                     ['user_id',$author->id],
@@ -36,9 +29,6 @@ class AuthorController extends Controller
                     'author'=>$author,
                     'contents'=>$contents,
                     'assets'=>$assets,
-                    'followers'=>$followers,
-                    'favorites'=>$favorites,
-                    'downloads'=>$downloads,
                     'follow' => $follow
                 ]);
             }
@@ -46,9 +36,6 @@ class AuthorController extends Controller
             'author'=>$author,
             'contents'=>$contents,
             'assets'=>$assets,
-            'followers'=>$followers,
-            'favorites'=>$favorites,
-            'downloads'=>$downloads,
         ]);
     }
 }

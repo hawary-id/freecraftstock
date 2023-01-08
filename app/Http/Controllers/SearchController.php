@@ -8,6 +8,7 @@ use App\Models\Follower;
 use App\Models\Like;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class SearchController extends Controller
@@ -35,6 +36,22 @@ class SearchController extends Controller
             $downloads = count(Download::with('content')->whereHas('content', function ($query) use ($author) {
                     $query->where('user_id', $author->id);
                 })->get());
+            if (Auth::user()) {
+                $follow = Follower::where([
+                    ['user_id',$author->id],
+                    ['follower_id',auth()->user()->id],
+                ])->count();
+                return Inertia::render('Author', [
+                    'author'=>$author,
+                    'contents'=>$contents,
+                    'assets'=>$assets,
+                    'followers'=>$followers,
+                    'favorites'=>$favorites,
+                    'downloads'=>$downloads,
+                    'follow' => $follow,
+                    'search' =>$value,
+                ]);
+            }
             return Inertia::render('Author', [
                 'author'=>$author,
                 'contents'=>$contents,

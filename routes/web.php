@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
@@ -27,6 +28,15 @@ Route::get('/type/{slug}/{sort}', [TypeController::class,'index'])->name('type')
 Route::get('/detail/{typeSlug}/{slug}/{code}', [DetailController::class,'index'])->name('detail');
 Route::get('/category/{slug}/{sort}', [CategoryController::class,'index'])->name('category');
 Route::get('/search/', [SearchController::class,'index'])->name('search');
+Route::get('/about-us', function () {
+        return Inertia::render('AboutUs');
+    })->name('aboutUs');
+Route::get('/term-of-use', function () {
+        return Inertia::render('TermOfUse');
+    })->name('termOfUse');
+Route::get('/contact-us', function () {
+        return Inertia::render('ContactUs');
+    })->name('contactUs');
 
 Route::prefix('user')->middleware(['auth', 'verified'])->name('user.')->group(function () {
    Route::get('/profile', [UserController::class,'index'])->name('home');
@@ -37,7 +47,15 @@ Route::prefix('user')->middleware(['auth', 'verified'])->name('user.')->group(fu
    Route::get('/follow/{id}', [UserController::class,'follow'])->name('follow');
    Route::get('/unfollow/{id}', [UserController::class,'unfollow'])->name('unfollow');
    Route::get('/download', [UserController::class,'download'])->name('download');
+   Route::get('/favorite', [UserController::class,'favorite'])->name('favorite');
+   Route::get('/collection', [UserController::class,'collection'])->name('collection');
+   Route::get('/following', [UserController::class,'following'])->name('following');
    Route::post('/profile/update/{id}', [UserController::class,'update'])->name('update');
+   Route::post('/profile/upload/{id}', [UserController::class,'upload'])->name('upload');
+});
+
+Route::prefix('admin')->middleware(['auth','verified','role:admin'])->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class,'index'])->name('dashboard');
 });
 
 Route::get('/dashboard', function () {

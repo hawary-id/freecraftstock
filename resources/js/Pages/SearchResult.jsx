@@ -3,6 +3,7 @@ import FooterSmall from "@/Components/FooterSmall";
 import Navbar from "@/Components/Navbar";
 import Search from "@/Components/Search";
 import ContentResult from "@/Layouts/ContentResult";
+import { Head } from "@inertiajs/inertia-react";
 
 export default function SearchResult({
     auth,
@@ -14,6 +15,9 @@ export default function SearchResult({
 }) {
     return (
         <>
+            <Head>
+                <title>{title}</title>
+            </Head>
             <div className="h-screen">
                 {/* Start:Navbar */}
                 <Navbar

@@ -4,6 +4,7 @@ import FooterSmall from "@/Components/FooterSmall";
 import NavbarUser from "@/Components/NavbarUser";
 import UserNavbar from "@/Components/UserNavbar";
 import UserContent from "@/Layouts/UserContent";
+import { Head } from "@inertiajs/inertia-react";
 
 export default function Profile({
     auth,
@@ -13,7 +14,10 @@ export default function Profile({
 }) {
     return (
         <>
-            <div className="h-screen bg-slate-100">
+            <Head>
+                <title>Profile</title>
+            </Head>
+            <div className="h-screen md:mb-0 md:h-screen bg-slate-100">
                 {/* Start:Navbar */}
                 <NavbarUser
                     auth={auth}
@@ -30,11 +34,10 @@ export default function Profile({
                 <UserContent auth={auth} />
 
                 {/* End:Content */}
-
-                {/* Start:Footer */}
-                <Footer />
-                {/* End:Footer */}
             </div>
+            {/* Start:Footer */}
+            <Footer />
+            {/* End:Footer */}
             <FooterSmall />
         </>
     );

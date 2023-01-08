@@ -17,7 +17,6 @@ class DetailController extends Controller
     {
         $similars = Content::with('type', 'user')->where('slug', $slug)->where('code', '!=', $code)->get();
         $content = Content::with('type', 'user')->where('code', $code)->first();
-        $followers = Follower::where('user_id', $content->user_id)->count();
         if(Auth::user()){
             $collect = Collection::where([
                 ['content_id',$content->id],
@@ -34,7 +33,6 @@ class DetailController extends Controller
             return Inertia::render('Detail', [
             'similars'=> $similars,
             'content'=> $content,
-            'followers'=>$followers,
             'collect'=>$collect,
             'like'=>$like,
             'follow'=>$follow,
@@ -43,7 +41,6 @@ class DetailController extends Controller
         return Inertia::render('Detail', [
             'similars'=> $similars,
             'content'=> $content,
-            'followers'=>$followers,
         ]);
     }
 }

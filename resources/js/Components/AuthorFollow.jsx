@@ -1,8 +1,9 @@
 import { Link } from "@inertiajs/inertia-react";
 import { useState } from "react";
 
-export default function AuthorFollow({ follow, authorId, authId }) {
-    if (authorId == authId) {
+export default function AuthorFollow({ follow, authorId, auth }) {
+    console.log(authorId);
+    if (auth && authorId === auth.user.id) {
         return (
             <div className="flex items-center gap-3">
                 <button

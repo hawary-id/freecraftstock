@@ -7,7 +7,7 @@ export default function CardCategory({ name, thumbnail, slug, id }) {
                 id === 0
                     ? "row-span-2 col-span-2 md:col-span-3"
                     : "col-span-2 md:row-span-1"
-            } cursor-pointer overflow-hidden group transition relative rounded`}
+            } cursor-pointer overflow-hidden group transition relative rounded bg-gray-200`}
         >
             <img
                 src={thumbnail}

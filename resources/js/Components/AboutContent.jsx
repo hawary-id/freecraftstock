@@ -3,8 +3,8 @@ import { Link } from "@inertiajs/inertia-react";
 export default function AboutContent(second) {
     return (
         <div className="w-full px-3 md:px-6">
-            <div className="py-6 text-center md:py-10">
-                <h1 className="mb-2 text-2xl font-bold text-green-500">
+            <div className="flex flex-col items-center py-6 text-center md:py-10">
+                <h1 className="mb-2 text-2xl font-bold text-green-500 border-b-2 border-green-500 w-fit">
                     About Us
                 </h1>
                 <p className="mb-2 text-slate-600">
@@ -51,8 +51,8 @@ export default function AboutContent(second) {
                     ></iframe>
                 </div>
             </div>
-            <div className="py-6 text-center md:py-10">
-                <h1 className="mb-2 text-2xl font-bold text-green-500">
+            <div className="flex flex-col items-center py-6 text-center md:py-10">
+                <h1 className="mb-2 text-2xl font-bold text-green-500 border-b-2 border-green-500 w-fit">
                     Our Team
                 </h1>
                 <div className="w-full divide-y divide-slate-200">

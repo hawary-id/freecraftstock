@@ -22,9 +22,9 @@ export default function MainBanner({ recommended, types }) {
                             name="type"
                         >
                             <option value="All">All</option>
-                            {types.type.map((data) => (
-                                <option value={data.slug} key={data.id}>
-                                    {data.name}
+                            {types.data.map((type) => (
+                                <option value={type.slug} key={type.id}>
+                                    {type.name}
                                 </option>
                             ))}
                         </select>
@@ -44,7 +44,7 @@ export default function MainBanner({ recommended, types }) {
                     </label>
                 </form>
                 <div className="flex justify-center w-full gap-3 py-3 overflow-x-auto md:py-4">
-                    <MainRecommended keyword={recommended.keyword} />
+                    <MainRecommended keyword={recommended.data} />
                 </div>
             </div>
         </>

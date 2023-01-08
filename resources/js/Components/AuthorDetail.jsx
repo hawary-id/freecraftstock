@@ -12,7 +12,7 @@ export default function AuthorDetail({
         >
             <img
                 src={author.thumbnail}
-                className="w-16 h-16 border-2 rounded-full border-sky-300 "
+                className="w-16 h-16 overflow-hidden bg-gray-200 border-2 rounded-full border-sky-300"
                 alt=""
             />
             <div className="flex flex-col ml-3">
@@ -20,13 +20,13 @@ export default function AuthorDetail({
                     {author.name}
                 </div>
                 <small className="text-sm font-light text-slate-400">
-                    {followers} Followers
+                    {author.followers} Followers
                 </small>
             </div>
             <div className="hidden mx-0 text-center divide-x md:flex md:mx-24">
                 <div className="flex flex-col justify-center px-2">
                     <div className="text-base font-semibold text-slate-700">
-                        {assets}
+                        {author.contents}
                     </div>
                     <div className="text-sm font-light text-slate-400">
                         Assets
@@ -35,7 +35,7 @@ export default function AuthorDetail({
 
                 <div className="flex flex-col justify-center px-2">
                     <div className="text-base font-semibold text-slate-700">
-                        {favorites}
+                        {author.likes}
                     </div>
                     <div className="text-sm font-light text-slate-400">
                         Favorites
@@ -43,7 +43,7 @@ export default function AuthorDetail({
                 </div>
                 <div className="flex flex-col justify-center px-2">
                     <div className="text-base font-semibold text-slate-700">
-                        {downloads}
+                        {author.downloads}
                     </div>
                     <div className="text-sm font-light text-slate-400">
                         Downloads

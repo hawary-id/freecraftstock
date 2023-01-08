@@ -27,17 +27,15 @@ export default function Footer() {
                         </Link>
                         <ul className="flex gap-3 text-slate-300">
                             <li className="nav-link">
-                                <Link href={route("prototype.about_us")}>
-                                    About Us
-                                </Link>
+                                <Link href={route("aboutUs")}>About Us</Link>
                             </li>
                             <li className="nav-link">
-                                <Link href={route("prototype.about_us")}>
+                                <Link href={route("contactUs")}>
                                     Contact Us
                                 </Link>
                             </li>
                             <li className="nav-link">
-                                <Link href={route("prototype.term_of_use")}>
+                                <Link href={route("termOfUse")}>
                                     Term of Use
                                 </Link>
                             </li>

@@ -21,7 +21,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('thumbnail')->nullable();
-            $table->integer('content_count')->nullable();
+            $table->integer('content')->nullable();
+            $table->integer('followers')->nullable();
+            $table->integer('downloads')->nullable();
+            $table->integer('likes')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

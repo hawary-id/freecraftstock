@@ -8,7 +8,7 @@ export default function CardSimilar({
 }) {
     return (
         <a href="" className="group">
-            <div className="relative flex h-40 cursor-pointer w-72 md:h-56 md:w-96">
+            <div className="relative flex h-40 bg-gray-200 cursor-pointer w-72 md:h-56 md:w-96">
                 <img
                     src={thumbnail}
                     alt=""

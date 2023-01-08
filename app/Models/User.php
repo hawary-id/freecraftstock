@@ -25,7 +25,10 @@ class User extends Authenticatable
         'password',
         'roles',
         'thumbnail',
-        'content_count',
+        'contents',
+        'followers',
+        'downloads',
+        'likes',
     ];
 
     /**
@@ -50,5 +53,9 @@ class User extends Authenticatable
     public function userpremium()
     {
         return $this->belongsTo(UserPremium::class, 'user_id', 'id');
+    }
+    public function follower()
+    {
+        return $this->hasMany(Follower::class, 'user_id', 'id');
     }
 }

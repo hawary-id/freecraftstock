@@ -12,7 +12,7 @@ export default function CardContent({
     code,
 }) {
     return (
-        <li className="relative flex h-[250px] md:h-[400px] w-full md:w-auto grow cursor-pointer group overflow-hidden">
+        <li className="relative flex h-[250px] md:h-[400px] w-full md:w-auto grow cursor-pointer group overflow-hidden bg-gray-200 rounded">
             <img
                 src={thumbnail}
                 alt={name}

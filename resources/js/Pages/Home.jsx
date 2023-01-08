@@ -4,7 +4,7 @@ import FooterSmall from "@/Components/FooterSmall";
 import MainBanner from "@/Components/MainBanner";
 import MainFooter from "@/Components/MainFooter";
 import MainNavbar from "@/Components/MainNavbar";
-import { Link } from "@inertiajs/inertia-react";
+import { Head, Link } from "@inertiajs/inertia-react";
 import MainContent from "@/Components/MainContent";
 import MainCategory from "@/Components/MainCategory";
 
@@ -18,6 +18,9 @@ export default function Home({
 }) {
     return (
         <>
+            <Head>
+                <title>Free Download Vectors, Photos, PSD, SVG, PNG</title>
+            </Head>
             <div className="h-screen">
                 {/* Start:Navbar */}
                 <MainNavbar

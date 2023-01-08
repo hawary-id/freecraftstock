@@ -53,5 +53,8 @@ class Content extends Model
     {
         return $this->belongsToMany(Category::class, 'category_contents');
     }
-
+    public function collection()
+    {
+        return $this->hasMany(Collection::class, 'content_id', 'id');
+    }
 }

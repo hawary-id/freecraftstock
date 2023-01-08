@@ -3,6 +3,7 @@ import FooterSmall from "@/Components/FooterSmall";
 import Navbar from "@/Components/Navbar";
 import Search from "@/Components/Search";
 import Content from "@/Layouts/Content";
+import { Head } from "@inertiajs/inertia-react";
 
 export default function Category({
     auth,
@@ -15,6 +16,9 @@ export default function Category({
 }) {
     return (
         <>
+            <Head>
+                <title>{title[0].name}</title>
+            </Head>
             <div className="h-screen">
                 {/* Start:Navbar */}
                 <Navbar

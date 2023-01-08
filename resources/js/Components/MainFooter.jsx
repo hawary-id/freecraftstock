@@ -7,7 +7,7 @@ export default function MainFooter() {
                 <div className="flex items-center w-full text-white">
                     <div className="flex flex-col">
                         <Link
-                            href={route("prototype.home")}
+                            href={route("home")}
                             className="text-4xl font-semibold"
                         >
                             Freecraftstock
@@ -20,21 +20,23 @@ export default function MainFooter() {
                 <div className="flex self-end justify-end w-full">
                     <div className="flex flex-col">
                         <Link
-                            href={route("prototype.register")}
+                            href={route("register")}
                             className="self-end py-1 mb-2 text-sm text-center bg-orange-400 border rounded-md w-28 text-slate-50 hover:bg-orange-500 hover:ring hover:ring-blue-300"
                         >
                             Sign Up Free
                         </Link>
                         <ul className="flex gap-3 text-slate-300">
                             <li className="nav-link">
-                                <a href="">About</a>
+                                <Link href={route("aboutUs")}>About Us</Link>
                             </li>
                             <li className="nav-link">
-                                <a href="">Contact Us</a>
+                                <Link href={route("contactUs")}>
+                                    Contact Us
+                                </Link>
                             </li>
-                            <li className="nav-link">
+                            <Link href={route("termOfUse")}>
                                 <a href="">Term of Use</a>
-                            </li>
+                            </Link>
                         </ul>
                     </div>
                 </div>

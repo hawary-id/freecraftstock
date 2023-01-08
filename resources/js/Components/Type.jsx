@@ -8,7 +8,7 @@ export default function Type({ types }) {
                     Find Your Inspiration Here
                 </h1>
                 <div className="flex gap-8 p-6 overflow-x-auto text-center md:gap-14 md:p-10">
-                    {types.type.map((type) => (
+                    {types.data.map((type) => (
                         <TypeItems
                             key={type.id}
                             slug={type.slug}

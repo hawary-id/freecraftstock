@@ -22,7 +22,18 @@ export default function Avatar({ avatar, style }) {
                     <div className="hidden md:block text-slate-200 group-hover:text-white">
                         {avatar.user.name}
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-[url('https://picsum.photos/50/50')] bg-cover border-2 group-hover:brightness-125"></div>
+                    <div className="w-8 h-8 overflow-hidden border-2 rounded-full group-hover:brightness-125">
+                        {avatar.user.thumbnail ? (
+                            <img
+                                src={`/Storage/${avatar.user.thumbnail}`}
+                                className="w-full h-full"
+                            />
+                        ) : (
+                            <div className="flex items-center justify-center w-full h-full text-xl text-center text-slate-800 bg-sky-300 group-hover:brightness-50">
+                                {Array.from(avatar.user.name)[0].toUpperCase()}
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div
                     className={`rounded-xl text-slate-50 font-medium flex hidden flex-col absolute z-[999] ${style} min-w-[180px] overflow-hidden bg-slate-800`}
@@ -35,25 +46,38 @@ export default function Avatar({ avatar, style }) {
                         <span className="mr-2 bi bi-person-circle"></span>
                         Profile
                     </Link>
-                    <a
-                        href="#!"
+                    <Link
+                        href={route("user.download")}
                         className="px-4 py-2 transition-all hover:bg-slate-700"
                     >
-                        <span className="mr-2 bi bi-download"></span>Download
-                    </a>
-                    <a
-                        href="#!"
+                        <span className="mr-2 bi bi-download"></span>Downloads
+                    </Link>
+                    <Link
+                        href={route("user.favorite")}
+                        className="px-4 py-2 transition-all hover:bg-slate-700"
+                    >
+                        <span className="mr-2 bi bi-heart"></span>Favorites
+                    </Link>
+                    <Link
+                        href={route("user.collection")}
                         className="px-4 py-2 transition-all hover:bg-slate-700"
                     >
                         <span className="mr-2 bi bi-folder-plus"></span>
-                        Collection
-                    </a>
-                    <a
+                        Collections
+                    </Link>
+                    <Link
+                        href={route("user.following")}
+                        className="px-4 py-2 transition-all hover:bg-slate-700"
+                    >
+                        <span className="mr-2 bi bi-person-check"></span>
+                        Followings
+                    </Link>
+                    <Link
                         href="#!"
                         className="px-4 py-2 transition-all hover:bg-slate-700"
                     >
                         <span className="mr-2 bi bi-gear"></span>Settings
-                    </a>
+                    </Link>
                     <Link
                         href={route("logout")}
                         method="post"

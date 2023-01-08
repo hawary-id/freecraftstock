@@ -3,6 +3,7 @@ import FooterSmall from "@/Components/FooterSmall";
 import Navbar from "@/Components/Navbar";
 import Search from "@/Components/Search";
 import Content from "@/Layouts/Content";
+import { Head } from "@inertiajs/inertia-react";
 
 export default function Type({
     auth,
@@ -15,7 +16,10 @@ export default function Type({
 }) {
     return (
         <>
-            <div className="h-screen">
+            <Head>
+                <title>{title[0].name}</title>
+            </Head>
+            <div className="mb-36">
                 {/* Start:Navbar */}
                 <Navbar
                     auth={auth}
@@ -37,11 +41,11 @@ export default function Type({
                     link="type"
                 />
                 {/* End:Content */}
-
-                {/* Start:Footer */}
-                <Footer />
-                {/* End:Footer */}
             </div>
+            {/* Start:Footer */}
+            <Footer />
+            {/* End:Footer */}
+
             <FooterSmall />
         </>
     );

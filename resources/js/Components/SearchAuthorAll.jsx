@@ -10,6 +10,8 @@ export default function SearchAuthorAll({ types, username }) {
             setScroll(window.scrollY > 300);
             if (window.scrollY > 300) {
                 searchTarget.current.classList.remove("hidden");
+            } else if (window.scrollY < 300) {
+                searchTarget.current.classList.add("hidden");
             }
         });
     }, []);
@@ -38,9 +40,9 @@ export default function SearchAuthorAll({ types, username }) {
                                 name="type"
                             >
                                 <option value="All">All</option>
-                                {types.type.map((data) => (
-                                    <option value={data.slug} key={data.id}>
-                                        {data.name}
+                                {types.data.map((type) => (
+                                    <option value={type.slug} key={type.id}>
+                                        {type.name}
                                     </option>
                                 ))}
                             </select>

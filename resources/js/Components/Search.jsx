@@ -37,9 +37,9 @@ export default function Search({ recommended, types }) {
                             name="type"
                         >
                             <option value="All">All</option>
-                            {types.type.map((data) => (
-                                <option value={data.slug} key={data.id}>
-                                    {data.name}
+                            {types.data.map((type) => (
+                                <option value={type.slug} key={type.id}>
+                                    {type.name}
                                 </option>
                             ))}
                         </select>
@@ -60,7 +60,7 @@ export default function Search({ recommended, types }) {
                 </form>
             </div>
             <div className="flex w-full gap-3 px-3 py-3 overflow-x-auto text-sm bg-white border-b md:px-6 top-26 text-slate-500">
-                <SearchRecommended keyword={recommended.keyword} />
+                <SearchRecommended keyword={recommended.data} />
             </div>
         </div>
     );
